@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeybordInput : MonoBehaviour
+public class MoveKeybordInput : MonoBehaviour
 {
-    [SerializeField] private float speed = 3;
+    [SerializeField] private float speed = 6;
 
     void Update()
     {

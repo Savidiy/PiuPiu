@@ -418,6 +418,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8098000668303140665, guid: 2c9633a6ba090854a8813038ceba435f,
+        type: 3}
+      propertyPath: cooldown
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 9039552754071509444, guid: 2c9633a6ba090854a8813038ceba435f,
         type: 3}
       propertyPath: m_Name
@@ -480,22 +485,3 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2c9633a6ba090854a8813038ceba435f, type: 3}
---- !u!1 &2088370807 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9039552754071509444, guid: 2c9633a6ba090854a8813038ceba435f,
-    type: 3}
-  m_PrefabInstance: {fileID: 2088370806}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2088370811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2088370807}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3c31fbbdcff501419442663c2796223, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 6
