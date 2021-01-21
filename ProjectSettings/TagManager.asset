@@ -13,12 +13,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Player Ship
+  - Player Bullets
+  - Enemies Ships
+  - Enemies Bullets
+  - Bonuses
+  - Walls
   - 
   - 
   - 
