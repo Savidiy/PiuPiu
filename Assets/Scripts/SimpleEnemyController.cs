@@ -19,6 +19,9 @@ public class SimpleEnemyController : MonoBehaviour
         transform.Translate(dx * Time.deltaTime, 0, 0);
 
         if (transform.position.x < leftScreenBorder)
+        {
             Destroy(gameObject);
+            FindObjectOfType<ScoreCalc>().ScoreCheck(-30);
+        }
     }
 }

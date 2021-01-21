@@ -29,6 +29,7 @@ public class FireKeybordInput : MonoBehaviour
                     g.Fire();
                 }
                 cooldownTimer = 0;
+                FindObjectOfType<ScoreCalc>().ScoreCheck(-1);
             }
         }
     }

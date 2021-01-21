@@ -24,6 +24,9 @@ public class EnemyFactory : MonoBehaviour
 
             GameObject enemy = Instantiate(enemyPrefab);
 
+            int randomIndex = Random.Range(1, 4);
+            enemy.GetComponent<ILiveController>().SetLives(randomIndex);
+
             Camera camera = Camera.main;
 
             var x = camera.orthographicSize * camera.aspect;
