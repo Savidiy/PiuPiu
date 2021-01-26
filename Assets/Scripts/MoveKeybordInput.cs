@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class MoveKeybordInput : MonoBehaviour
 {
-    [SerializeField] private float speed = 6;
+    [SerializeField] private float speed = 300f;
+    [SerializeField] private Rect borderRect;
 
     void Update()
     {
