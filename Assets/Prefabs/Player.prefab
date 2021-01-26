@@ -273,7 +273,7 @@ MonoBehaviour:
   speed: 400
   minX: -335
   maxX: 335
-  minY: -290
+  minY: -340
   maxY: 274
 --- !u!114 &8098000668303140665
 MonoBehaviour:
