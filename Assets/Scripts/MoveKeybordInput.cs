@@ -5,15 +5,24 @@ using UnityEngine;
 public class MoveKeybordInput : MonoBehaviour
 {
     [SerializeField] private float speed = 300f;
-    [SerializeField] private Rect borderRect;
+    [SerializeField] private float minX = -200f;
+    [SerializeField] private float maxX = 200f;
+    [SerializeField] private float minY = -200f;
+    [SerializeField] private float maxY = 200f;
 
     void Update()
     {
-        float vertical = Input.GetAxis("Vertical");
         float horizontal = Input.GetAxis("Horizontal");
+        float vertical = Input.GetAxis("Vertical");
 
-        //if (vertical != 0 || horizontal != 0)
-        //    Debug.Log($"vert = {vertical}, hoz = {horizontal}");
+        float oldX = transform.position.x;
+        float oldY = transform.position.y;
+
+        // чтобы не тереться и замедляться о край экрана
+        if (oldX == minX && horizontal < 0) horizontal = 0;
+        if (oldX == maxX && horizontal > 0) horizontal = 0;
+        if (oldY == minY && vertical < 0) vertical = 0;
+        if (oldY == maxY && vertical > 0) vertical = 0;
 
         Vector2 move = new Vector2(horizontal, vertical);
         move.Normalize();
@@ -21,9 +30,14 @@ public class MoveKeybordInput : MonoBehaviour
         float dx = move.x * speed * Time.deltaTime;
         float dy = move.y * speed * Time.deltaTime;
 
-        float newX = transform.position.x + dx;
-        float newY = transform.position.y + dy;
+        float newX = Mathf.Round(oldX + dx);
+        float newY = Mathf.Round(oldY + dy);
         float newZ = transform.position.z;
+
+        if (newX < minX) newX = minX;
+        if (newX > maxX) newX = maxX;
+        if (newY < minY) newY = minY;
+        if (newY > maxY) newY = maxY;
 
         Vector3 newPosition = new Vector3(newX, newY, newZ);
 

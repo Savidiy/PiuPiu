@@ -169,10 +169,22 @@ CompositeCollider2D:
         Y: -214500000
   m_CompositePaths:
     m_Paths:
-    - - {x: 14.249941, y: -22.300001}
-      - {x: 14.249941, y: 2.3000002}
-      - {x: -14.25, y: 2.2999415}
-      - {x: -14.249941, y: -22.300001}
+    - - {x: 14.249941, y: -22.93933}
+      - {x: 14.25, y: -21.45}
+      - {x: 30.54997, y: -21.449972}
+      - {x: 30.549942, y: -9.75}
+      - {x: 14.249971, y: -9.749978}
+      - {x: 14.249941, y: 3.1524239}
+      - {x: 6.499971, y: 3.1524453}
+      - {x: 6.499942, y: 24.1}
+      - {x: -6.5, y: 24.099941}
+      - {x: -6.500002, y: 3.1524024}
+      - {x: -14.25, y: 3.1523652}
+      - {x: -14.250014, y: -9.750022}
+      - {x: -30.550001, y: -9.750058}
+      - {x: -30.549942, y: -21.45}
+      - {x: -14.249973, y: -21.45003}
+      - {x: -14.249941, y: -22.93933}
   m_VertexDistance: 0.0005
   m_OffsetDistance: 0.00005
 --- !u!50 &-6501867208096263090
@@ -258,7 +270,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d3c31fbbdcff501419442663c2796223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 400
+  minX: -330
+  maxX: 330
+  minY: -274
+  maxY: 150
 --- !u!114 &8098000668303140665
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -271,7 +287,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 381680da4aaa4014f9d482b2746192e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cooldown: 0.5
+  cooldown: 0.1
 --- !u!114 &8236997973245219103
 MonoBehaviour:
   m_ObjectHideFlags: 0
