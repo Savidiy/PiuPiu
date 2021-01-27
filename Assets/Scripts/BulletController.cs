@@ -23,4 +23,5 @@ public class BulletController : MonoBehaviour
         float dy = _direction.y * Time.deltaTime;
         transform.Translate(dx, dy, 0);
     }
+
 }

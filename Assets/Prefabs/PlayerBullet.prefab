@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 5489240530947839711}
   - component: {fileID: 5078221652725340995}
   - component: {fileID: 7251028371140859090}
+  - component: {fileID: 7291586319104365781}
   m_Layer: 9
   m_Name: PlayerBullet
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1982455291
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.8584906, g: 0.6150834, b: 0.17412782, a: 1}
@@ -127,3 +128,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lives: 1
   _damage: 1
+  onDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7291586319104365781}
+        m_MethodName: CreateExplosionThere
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7291586319104365781
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5934969591460487524}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6da49655e5a5b4290b8354d1687435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
