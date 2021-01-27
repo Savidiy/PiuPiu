@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class SimpleGun : MonoBehaviour, IGun
 {
-    [SerializeField] GameObject bulletPrefab;
+    [SerializeField] BulletType type;
     [SerializeField] float bulletSpeed = 20;
 
     public void Fire()
     {
-        if (bulletPrefab != null)
-        {
-            GameObject bullet = Instantiate(bulletPrefab);
-            bullet.transform.position = transform.position;
 
-            float gunAngle = transform.rotation.eulerAngles.z / 180f * Mathf.PI; // translate degree to radians
-            float dx = Mathf.Cos(gunAngle) * bulletSpeed;
-            float dy = Mathf.Sin(gunAngle) * bulletSpeed;
+        float gunAngle = transform.rotation.eulerAngles.z / 180f * Mathf.PI; // translate degree to radians
+        float dx = Mathf.Cos(gunAngle) * bulletSpeed;
+        float dy = Mathf.Sin(gunAngle) * bulletSpeed;
+           
+        BulletManager.Instance.CreateBullet(
+            type,
+            x: transform.position.x,
+            y: transform.position.y,
+            dx: dx,
+            dy: dy);
 
-            Vector2 bulletPositionIncrement = new Vector2(dx, dy);
-
-            bullet.GetComponent<BulletController>().SetDirection(bulletPositionIncrement);
-        }
+        
     }
 }

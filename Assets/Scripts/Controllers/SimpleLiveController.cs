@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class SimpleLiveController : MonoBehaviour, ILiveController
 {
+    [SerializeField] GameObject destroyTarget;
     [SerializeField] int _lives = 1;
     [SerializeField] int _damage = 1;
     [SerializeField] UnityEvent onDead;
@@ -19,7 +20,7 @@ public class SimpleLiveController : MonoBehaviour, ILiveController
         _lives -= incomeDamage;
         if (_lives <= 0)
         {
-            Destroy(gameObject);
+            //Destroy(destroyTarget);
             onDead.Invoke();
         }
     }
@@ -27,5 +28,10 @@ public class SimpleLiveController : MonoBehaviour, ILiveController
     public void SetLives(int lives)
     {
         _lives = lives;
+    }
+
+    public void DestroyObject(GameObject obj)
+    {
+        Destroy(obj);
     }
 }

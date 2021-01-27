@@ -4,24 +4,29 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
-    Vector2 _direction = new Vector2();
-    [SerializeField] float lifetime = 2;
+    [SerializeField] Transform _transform;
+    float _dx;
+    float _dy;
 
-    public void SetDirection(Vector2 direction)
+    public void PlaceAndShoot(float x, float y, float dx, float dy)
     {
-        _direction = direction;
-    }
+        if (_transform != null)
+        {
+            _transform.gameObject.SetActive(true);
+            _transform.position = new Vector3(x, y, 0f);
+        }
 
-    private void Start()
-    {
-        Destroy(gameObject, lifetime);
+        _dx = dx;
+        _dy = dy;
     }
 
     void Update()
-    {        
-        float dx = _direction.x * Time.deltaTime;
-        float dy = _direction.y * Time.deltaTime;
-        transform.Translate(dx, dy, 0);
+    {
+        if (_transform != null)
+        {
+            float dx = _dx * Time.deltaTime;
+            float dy = _dy * Time.deltaTime;
+            _transform.Translate(dx, dy, 0);
+        }
     }
-
 }
