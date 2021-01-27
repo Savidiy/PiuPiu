@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MoveKeybordInput : MonoBehaviour
 {
+    [SerializeField] private Transform _transform;
     [SerializeField] private float speed = 300f;
     [SerializeField] private float minX = -200f;
     [SerializeField] private float maxX = 200f;
@@ -15,8 +16,8 @@ public class MoveKeybordInput : MonoBehaviour
         float horizontal = Input.GetAxis("Horizontal");
         float vertical = Input.GetAxis("Vertical");
 
-        float oldX = transform.position.x;
-        float oldY = transform.position.y;
+        float oldX = _transform.position.x;
+        float oldY = _transform.position.y;
 
         // чтобы не тереться и замедляться о край экрана
         if (oldX == minX && horizontal < 0) horizontal = 0;
@@ -32,7 +33,7 @@ public class MoveKeybordInput : MonoBehaviour
 
         float newX = Mathf.Round(oldX + dx);
         float newY = Mathf.Round(oldY + dy);
-        float newZ = transform.position.z;
+        float newZ = _transform.position.z;
 
         if (newX < minX) newX = minX;
         if (newX > maxX) newX = maxX;
@@ -41,6 +42,6 @@ public class MoveKeybordInput : MonoBehaviour
 
         Vector3 newPosition = new Vector3(newX, newY, newZ);
 
-        transform.position = newPosition;        
+        _transform.position = newPosition;        
     }
 }
