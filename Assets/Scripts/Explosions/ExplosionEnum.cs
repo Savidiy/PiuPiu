@@ -1,5 +1,6 @@
 ﻿
 public enum ExplosionType
 {
-    BulletExplosion
+    Bullet,
+    Ship
 }

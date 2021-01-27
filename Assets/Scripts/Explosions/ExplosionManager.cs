@@ -13,9 +13,10 @@ public class ExplosionManager : MonoBehaviour
     }
     static private ExplosionManager _instance;
 
-    [SerializeField] GameObject explosionPrefab;
+    [SerializeField] List<GameObject> prefabs;
+    //[SerializeField] GameObject explosionPrefab;
     [SerializeField] int _initialCount;
-    int _nextChildIndex;
+    int[] _nextChildIndex;
 
     void Awake()
     {
@@ -27,25 +28,38 @@ public class ExplosionManager : MonoBehaviour
 
     private void Start()
     {
-        _nextChildIndex = 0;
+        _nextChildIndex = new int[prefabs.Count];
         if (_initialCount < 1) _initialCount = 0;
-        for (int i = 0; i < _initialCount; i++)
+
+        foreach(var prefab in prefabs)
         {
-            GameObject exp = Instantiate(explosionPrefab, transform);
-            exp.SetActive(false);
+            GameObject folder = new GameObject();
+            folder.transform.parent = transform;
+            folder.name = prefab.name + "_Array";
+
+            for (int i = 0; i < _initialCount; i++)
+            {
+                GameObject exp = Instantiate(prefab, folder.transform);
+                exp.SetActive(false);
+            }
         }
+
     }
 
 
     public void CreateExplosion (ExplosionType type, float x, float y)
     {
-        if (_nextChildIndex >= 0 && _nextChildIndex < transform.childCount)
+        int typeIndex = (int)type;
+
+        Transform folder = transform.GetChild(typeIndex);
+
+        if (_nextChildIndex[typeIndex] >= 0 && _nextChildIndex[typeIndex] < folder.childCount)
         {            
-            Transform exp = transform.GetChild(_nextChildIndex);
+            Transform exp = folder.GetChild(_nextChildIndex[typeIndex]);
             if (exp.gameObject.activeSelf == true)
             {                
-                exp = Instantiate(explosionPrefab, transform).transform;
-                _nextChildIndex++;
+                exp = Instantiate(prefabs[typeIndex], folder).transform;
+                _nextChildIndex[typeIndex] = -1;
             }
 
             Explosion explosion = exp.GetComponent<Explosion>();
@@ -54,15 +68,14 @@ public class ExplosionManager : MonoBehaviour
                 explosion.StartExplosion(x, y);
             }
 
-            _nextChildIndex++;
-            if (_nextChildIndex >= transform.childCount)
-                _nextChildIndex = 0;
+            _nextChildIndex[typeIndex]++;
+            if (_nextChildIndex[typeIndex] >= folder.childCount)
+                _nextChildIndex[typeIndex] = 0;
         }
         else
         {
-            Debug.LogError($"{transform.name}:{GetType().Name} index out of range! Index = {_nextChildIndex}, length = {transform.childCount}");
-            _nextChildIndex = 0;
-        }
-        
+            Debug.LogError($"{transform.name}:{GetType().Name} index out of range! Index = {_nextChildIndex}, length = {folder.childCount}");
+            _nextChildIndex[typeIndex] = 0;
+        }        
     }
 }
