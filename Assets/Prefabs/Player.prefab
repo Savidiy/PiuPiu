@@ -49,6 +49,50 @@ MonoBehaviour:
   maxX: 335
   minY: -340
   maxY: 274
+--- !u!1 &2602466781331911538
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5429288671255641031}
+  - component: {fileID: 2550197883843111179}
+  m_Layer: 0
+  m_Name: CreateExplosion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5429288671255641031
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602466781331911538}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 9039552754071509465}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2550197883843111179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2602466781331911538}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c6da49655e5a5b4290b8354d1687435, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!1 &3803225132293074730
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,6 +270,7 @@ Transform:
   m_Children:
   - {fileID: 7022935393945957102}
   - {fileID: 8374514363423390588}
+  - {fileID: 5429288671255641031}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,7 +290,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.4}
     oldSize: {x: 64, y: 64}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
@@ -254,25 +299,25 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 2.5082479, y: 24.868927}
-      - {x: -2.655823, y: 24.655825}
-      - {x: -5.752367, y: 18.04198}
-      - {x: -6.9135866, y: 3.4925485}
-      - {x: -13.232371, y: 2.0256464}
-      - {x: -14.967471, y: -7.34418}
-      - {x: -30.295145, y: -12.344176}
-      - {x: -30.295145, y: -19.868929}
-      - {x: -28.131073, y: -21.950968}
-      - {x: -14, y: -22.672323}
-      - {x: -6.806922, y: -25.348751}
-      - {x: 6.4201717, y: -25.505035}
-      - {x: 14.066005, y: -22.672323}
-      - {x: 30.29515, y: -21.786894}
-      - {x: 30.29514, y: -12.049031}
-      - {x: 14.678551, y: -7.387903}
-      - {x: 13.636725, y: 1.7166119}
-      - {x: 7.7906456, y: 3.7922144}
-      - {x: 6.229617, y: 17.0165}
+    - - {x: 2.5082479, y: 30.86893}
+      - {x: -2.655823, y: 30.65582}
+      - {x: -5.965476, y: 23.189554}
+      - {x: -6.9135866, y: 9.492548}
+      - {x: -13.232371, y: 8.025646}
+      - {x: -14.967471, y: -1.34418}
+      - {x: -30.295145, y: -6.34418}
+      - {x: -30.295145, y: -13.86893}
+      - {x: -28.131073, y: -15.95097}
+      - {x: -14, y: -16.67232}
+      - {x: -6.806922, y: -19.34875}
+      - {x: 6.4201717, y: -19.50504}
+      - {x: 14.066005, y: -16.67232}
+      - {x: 30.29515, y: -15.78689}
+      - {x: 30.29514, y: -6.04903}
+      - {x: 14.678551, y: -1.387903}
+      - {x: 13.636725, y: 7.716612}
+      - {x: 6.725111, y: 9.792214}
+      - {x: 6.229617, y: 23.0165}
 --- !u!50 &-6501867208096263090
 Rigidbody2D:
   serializedVersion: 4
@@ -370,6 +415,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lives: 3
   _damage: 10
+  onDead:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2550197883843111179}
+        m_MethodName: CreateExplosionThere
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &4139370191325720848
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -6,6 +6,10 @@ public class EnemyFactory : MonoBehaviour
 {
     [SerializeField] float delay = 0.7f;
     [SerializeField] GameObject enemyPrefab;
+    [SerializeField] float minX = -300f;
+    [SerializeField] float maxX = 300f;
+    [SerializeField] float minY = 300f;
+    [SerializeField] float maxY = 300f;
     float timer = 0;
 
     // Start is called before the first frame update
@@ -24,15 +28,9 @@ public class EnemyFactory : MonoBehaviour
 
             GameObject enemy = Instantiate(enemyPrefab);
 
-            int randomIndex = Random.Range(1, 4);
-            enemy.GetComponent<ILiveController>().SetLives(randomIndex);
-
-            Camera camera = Camera.main;
-
-            var x = camera.orthographicSize * camera.aspect;
-            float minY = -camera.orthographicSize;
-            float maxY = camera.orthographicSize;
+            var x = Random.Range(minX, maxX);
             var y = Random.Range(minY, maxY);
+
             Vector3 spawnPosition = new Vector3(x, y, 0);
             enemy.transform.position = spawnPosition;
 

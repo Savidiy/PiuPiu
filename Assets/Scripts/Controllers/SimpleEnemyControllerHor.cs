@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SimpleEnemyController : MonoBehaviour
+public class SimpleEnemyControllerHor : MonoBehaviour
 {
     [SerializeField] float dx = 3;
     float leftScreenBorder;
@@ -21,7 +21,7 @@ public class SimpleEnemyController : MonoBehaviour
         if (transform.position.x < leftScreenBorder)
         {
             Destroy(gameObject);
-            FindObjectOfType<ScoreCalc>().ScoreCheck(-30);
+            //FindObjectOfType<ScoreCalc>().ScoreCheck(-30);
         }
     }
 }

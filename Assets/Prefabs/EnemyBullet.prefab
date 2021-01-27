@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4848430064877089334}
   - component: {fileID: 8613354298412648846}
   - component: {fileID: 7685520747687087660}
+  - component: {fileID: 7083457238661941924}
   m_Layer: 11
   m_Name: EnemyBullet
   m_TagString: Untagged
@@ -71,7 +72,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1982455291
-  m_SortingLayer: 4
+  m_SortingLayer: 2
   m_SortingOrder: 1
   m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 0.85882354, g: 0.23108068, b: 0.17254902, a: 1}
@@ -127,3 +128,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lives: 1
   _damage: 1
+  onDead:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7083457238661941924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8175534693850103649}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 742bdaec7f99830438be99c12daf38a1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

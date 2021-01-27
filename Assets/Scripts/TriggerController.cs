@@ -12,11 +12,11 @@ public class TriggerController : MonoBehaviour
         if (obj1 != null || obj2 != null)
         {
             obj1.GetHit(obj2.Damage);
-            obj2.GetHit(obj1.Damage);
+            //obj2.GetHit(obj1.Damage);
 
             string obj1name = name;
             string obj2name = collider.name;
-            Debug.Log($"Trigger: {obj1name} hit by {obj2.Damage}. {obj2name} hit by {obj1.Damage}.");
+            Debug.Log($"Trigger: {obj1name} hit {obj2name} by {obj2.Damage}.");
         }
     }
 

@@ -25,8 +25,7 @@ public class Explosion : MonoBehaviour
         }
         if (_spriteRenderer != null)
         {
-            _spriteRenderer.flipX = Random.Range(0, 2) == 0;
-            _spriteRenderer.flipY = Random.Range(0, 2) == 0;
+            _spriteRenderer.flipX = Random.Range(0, 2) == 0;           
         }
         else
         {
