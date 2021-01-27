@@ -4,7 +4,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(ILiveController))]
 [RequireComponent(typeof(Collider2D))]
-public class TriggerController : MonoBehaviour
+public class TriggerDamageController : MonoBehaviour
 {
     ILiveController liveController;
 
@@ -24,7 +24,7 @@ public class TriggerController : MonoBehaviour
 
             string obj1name = name;
             string obj2name = collider.name;
-            Debug.Log($"Trigger: {obj1name} hit {obj2name} by {obj2.Damage}.");
+            //Debug.Log($"Trigger: {obj1name} hit {obj2name} by {obj2.Damage}.");
         }
     }
 

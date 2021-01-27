@@ -4,4 +4,5 @@
 
     void GetHit(int incomeDamage);
     void SetLives(int lives);
+    void ResetLives();
 }

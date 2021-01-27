@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletManager : MonoBehaviour
+public class EnemyManager : MonoBehaviour
 {
-    static public BulletManager Instance
+    static public EnemyManager Instance
     {
         get
         {
             return _instance;
         }
     }
-    static private BulletManager _instance;
+    static private EnemyManager _instance;
 
     [SerializeField] List<GameObject> prefabs;
     [SerializeField] GameObject folderPrefab;
@@ -33,10 +33,14 @@ public class BulletManager : MonoBehaviour
 
         foreach (var prefab in prefabs)
         {
-            GameObject folder = Instantiate(folderPrefab);
+            GameObject folder;
+            if (folderPrefab == null)
+                folder = new GameObject();
+            else
+                folder = Instantiate(folderPrefab);
+
             folder.transform.parent = transform;
             folder.name = prefab.name + "_Array";
-
 
             for (int i = 0; i < _initialCount; i++)
             {
@@ -44,10 +48,9 @@ public class BulletManager : MonoBehaviour
                 obj.SetActive(false);
             }
         }
-
     }
 
-    public void CreateBullet(BulletType type, float x, float y, float dx, float dy)
+    public void SpawnEnemy(EnemyType type, float x, float y)
     {
         int typeIndex = (int)type;
 
@@ -62,10 +65,14 @@ public class BulletManager : MonoBehaviour
                 _nextChildIndex[typeIndex] = -1;
             }
 
-            BulletController bullet = obj.GetComponent<BulletController>();
-            if (bullet != null)
+            EnemySpawner spawner = obj.GetComponent<EnemySpawner>();
+            if (spawner != null)
             {
-                bullet.PlaceAndShoot(x, y, dx, dy);
+                spawner.Spawn(x, y);
+            }
+            else
+            {
+                Debug.LogError($"{transform.name}:{GetType().Name} there is not spawner on {obj.name}.");
             }
 
             _nextChildIndex[typeIndex]++;

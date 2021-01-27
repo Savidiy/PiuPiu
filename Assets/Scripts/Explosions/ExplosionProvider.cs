@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CreateExplosion : MonoBehaviour
+public class ExplosionProvider : MonoBehaviour
 {
     [SerializeField] ExplosionType type;
 
-    public void CreateExplosionThere()
+    public void CreateExplosionHere()
     {
         ExplosionManager.Instance.CreateExplosion(type, transform.position.x, transform.position.y);
     }

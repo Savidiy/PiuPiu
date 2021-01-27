@@ -3,11 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
 public class PlayerLiveController : MonoBehaviour, ILiveController
 {
-    [SerializeField] int _lives = 1;
+    int _currentLives = 1;
+    [SerializeField] int _maxLives = 1;
     [SerializeField] int _damage = 1;
     [SerializeField] UnityEvent onDead;
+
+    private void Start()
+    {
+        ResetLives();
+    }
+
     public int Damage
     {
         get { return _damage; }
@@ -16,22 +24,20 @@ public class PlayerLiveController : MonoBehaviour, ILiveController
 
     public void GetHit(int incomeDamage)
     {
-        _lives -= incomeDamage;
-        if (_lives <= 0)
+        _currentLives -= incomeDamage;
+        if (_currentLives <= 0)
         {
             onDead.Invoke();
-
-            _lives = 3;
-            float dx = 0; 
-            float dy = -0.8f * Camera.main.orthographicSize;
-            transform.position = new Vector3(dx, dy, 0);
-
-            FindObjectOfType<ScoreCalc>().ScoreCheck(-200);
         }
+    }
+
+    public void ResetLives()
+    {
+        _currentLives = _maxLives;
     }
 
     public void SetLives(int lives)
     {
-        _lives = lives;
+        _currentLives = lives;
     }
 }

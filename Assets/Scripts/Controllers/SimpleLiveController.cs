@@ -5,10 +5,16 @@ using UnityEngine.Events;
 
 public class SimpleLiveController : MonoBehaviour, ILiveController
 {
-    [SerializeField] GameObject destroyTarget;
-    [SerializeField] int _lives = 1;
+    int _currentLives = 1;
+    [SerializeField] int _maxLives = 1;
     [SerializeField] int _damage = 1;
     [SerializeField] UnityEvent onDead;
+
+    private void Start()
+    {
+        ResetLives();
+    }
+
     public int Damage
     {
         get { return _damage; }
@@ -17,17 +23,20 @@ public class SimpleLiveController : MonoBehaviour, ILiveController
 
     public void GetHit(int incomeDamage)
     {
-        _lives -= incomeDamage;
-        if (_lives <= 0)
+        _currentLives -= incomeDamage;
+        if (_currentLives <= 0)
         {
-            //Destroy(destroyTarget);
             onDead.Invoke();
         }
+    }
+    public void ResetLives()
+    {
+        _currentLives = _maxLives;
     }
 
     public void SetLives(int lives)
     {
-        _lives = lives;
+        _currentLives = lives;
     }
 
     public void DestroyObject(GameObject obj)

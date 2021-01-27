@@ -28,6 +28,11 @@ public class ColorLiveController : MonoBehaviour, ILiveController
         }
     }
 
+    public void ResetLives()
+    {
+        throw new System.NotImplementedException();
+    }
+
     public void SetLives(int lives)
     {
         _lives = lives;

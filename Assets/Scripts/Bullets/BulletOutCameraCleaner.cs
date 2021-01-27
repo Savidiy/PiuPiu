@@ -41,7 +41,7 @@ public class BulletOutCameraCleaner : MonoBehaviour
                             || t.position.y < yMin
                             || t.position.y > yMax)
                         {
-                            Debug.Log($"{name}:{Time.time} off {i} bullet.");
+                            //Debug.Log($"{name}:{Time.time} off {i} bullet.");
                             t.gameObject.SetActive(false);
                         }
                     }
